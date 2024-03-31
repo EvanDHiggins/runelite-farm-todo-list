@@ -3,17 +3,28 @@ package com.evanhiggins.farmruns;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
+import net.runelite.client.config.ConfigSection;
 
 @ConfigGroup("example")
 public interface FarmRunsConfig extends Config
 {
-	@ConfigItem(
-		keyName = "greeting",
-		name = "Welcome Greeting",
-		description = "The message to show to the user when they login"
+
+	@ConfigSection(
+			name = "Allotments",
+			description = "Allotment patches",
+			position = 0
 	)
-	default String greeting()
+	String allotments = "allotments";
+
+	@ConfigItem(
+		keyName = "allotment-falador",
+		name = "Falador",
+		description = "Whether Falador Allotments should be included in todo lists.",
+		position = 1,
+		section = allotments
+	)
+	default boolean falador()
 	{
-		return "Hello";
+		return false;
 	}
 }

@@ -11,6 +11,8 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+import net.runelite.client.ui.overlay.OverlayManager;
+
 import java.lang.Exception;
 
 @Slf4j
@@ -25,10 +27,17 @@ public class FarmRunsPlugin extends Plugin
 	@Inject
 	private FarmRunsConfig config;
 
+	@Inject
+	private FarmRunsOverlay farmRunsOverlay;
+
+	@Inject
+	private OverlayManager overlayManager;
+
 	@Override
 	protected void startUp() throws Exception
 	{
 		log.info("Example started!");
+
 	}
 
 	@Override
@@ -42,7 +51,7 @@ public class FarmRunsPlugin extends Plugin
 	{
 		if (gameStateChanged.getGameState() == GameState.LOGGED_IN)
 		{
-			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "Example says " + config.greeting(), null);
+			overlayManager.add(farmRunsOverlay);
 		}
 	}
 
