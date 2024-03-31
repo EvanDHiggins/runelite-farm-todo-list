@@ -1,4 +1,4 @@
-package com.example;
+package com.evanhiggins.farmruns;
 
 import com.google.inject.Provides;
 import javax.inject.Inject;
@@ -11,18 +11,19 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+import java.lang.Exception;
 
 @Slf4j
 @PluginDescriptor(
-	name = "Example"
+	name = "Farm Runs"
 )
-public class ExamplePlugin extends Plugin
+public class FarmRunsPlugin extends Plugin
 {
 	@Inject
 	private Client client;
 
 	@Inject
-	private ExampleConfig config;
+	private FarmRunsConfig config;
 
 	@Override
 	protected void startUp() throws Exception
@@ -46,8 +47,8 @@ public class ExamplePlugin extends Plugin
 	}
 
 	@Provides
-	ExampleConfig provideConfig(ConfigManager configManager)
+	FarmRunsConfig provideConfig(ConfigManager configManager)
 	{
-		return configManager.getConfig(ExampleConfig.class);
+		return configManager.getConfig(FarmRunsConfig.class);
 	}
 }
