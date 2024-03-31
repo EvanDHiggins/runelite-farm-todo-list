@@ -1,30 +1,25 @@
-package com.evanhiggins.farmruns;
+package com.evanhiggins.farmruns
 
-import net.runelite.client.config.Config;
-import net.runelite.client.config.ConfigGroup;
-import net.runelite.client.config.ConfigItem;
-import net.runelite.client.config.ConfigSection;
+import net.runelite.client.config.Config
+import net.runelite.client.config.ConfigGroup
+import net.runelite.client.config.ConfigItem
+import net.runelite.client.config.ConfigSection
 
 @ConfigGroup("example")
-public interface FarmRunsConfig extends Config
-{
+interface FarmRunsConfig : Config {
+    @ConfigItem(
+        keyName = "allotment-falador",
+        name = "Falador",
+        description = "Whether Falador Allotments should be included in todo lists.",
+        position = 1,
+        section = allotments
+    )
+    fun falador(): Boolean {
+        return false
+    }
 
-	@ConfigSection(
-			name = "Allotments",
-			description = "Allotment patches",
-			position = 0
-	)
-	String allotments = "allotments";
-
-	@ConfigItem(
-		keyName = "allotment-falador",
-		name = "Falador",
-		description = "Whether Falador Allotments should be included in todo lists.",
-		position = 1,
-		section = allotments
-	)
-	default boolean falador()
-	{
-		return false;
-	}
+    companion object {
+        @ConfigSection(name = "Allotments", description = "Allotment patches", position = 0)
+        const val allotments: String = "allotments"
+    }
 }

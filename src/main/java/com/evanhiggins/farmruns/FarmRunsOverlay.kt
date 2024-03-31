@@ -40,7 +40,6 @@ class FarmRunsOverlay @Inject constructor(
         isSnappable = true
         panelComponent.children.add(farmRunComponent)
         layer = OverlayLayer.ABOVE_WIDGETS
-
     }
 
     override fun render(graphics: Graphics2D?): Dimension {
